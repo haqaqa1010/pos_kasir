@@ -9,9 +9,10 @@
             <div class="card-header bg-primary text-white">
                 <h5 class="mb-0">
                     <i class="bi bi-calendar3 me-2"></i>Transaksi Hari Ini
-                    <small class="ms-2">({{ date('d F Y') }})</small>
+                    <small class="ms-2">(09 December 2025)</small>
                 </h5>
             </div>
+
             <div class="card-body">
                 <!-- Today's Summary -->
                 <div class="row mb-4">
@@ -21,7 +22,7 @@
                                 <div class="d-flex justify-content-between">
                                     <div>
                                         <h6 class="text-muted">Transaksi Hari Ini</h6>
-                                        <h2 class="mb-0" id="todayCount">0</h2>
+                                        <h2 class="mb-0" id="todayCount">5</h2>
                                     </div>
                                     <div class="align-self-center">
                                         <i class="bi bi-receipt" style="font-size: 2.5rem; color: #198754;"></i>
@@ -29,7 +30,7 @@
                                 </div>
                                 <small class="text-muted">
                                     <i class="bi bi-clock me-1"></i>Shift: 
-                                    <span id="currentShift">Pagi</span>
+                                    <span id="currentShift">Pagi (08-16)</span>
                                 </small>
                             </div>
                         </div>
@@ -41,15 +42,15 @@
                                 <div class="d-flex justify-content-between">
                                     <div>
                                         <h6 class="text-muted">Total Pendapatan</h6>
-                                        <h2 class="mb-0" id="todayRevenue">RP 0</h2>
+                                        <h2 class="mb-0" id="todayRevenue">Rp 560.174</h2>
                                     </div>
                                     <div class="align-self-center">
                                         <i class="bi bi-cash-coin" style="font-size: 2.5rem; color: #0d6efd;"></i>
                                     </div>
                                 </div>
-                                <small class="text-success">
-                                    <i class="bi bi-arrow-up-right me-1"></i>
-                                    Update terakhir: <span id="lastUpdate">{{ date('H:i') }}</span>
+                                <small class="text-muted">
+                                    <i class="bi bi-clock me-1"></i>
+                                    Update terakhir: <span id="lastUpdate">14:53</span>
                                 </small>
                             </div>
                         </div>
@@ -61,7 +62,7 @@
                                 <div class="d-flex justify-content-between">
                                     <div>
                                         <h6 class="text-muted">Produk Terjual</h6>
-                                        <h2 class="mb-0" id="productsSold">0</h2>
+                                        <h2 class="mb-0" id="productsSold">50</h2>
                                     </div>
                                     <div class="align-self-center">
                                         <i class="bi bi-cart-check" style="font-size: 2.5rem; color: #ffc107;"></i>
@@ -69,96 +70,269 @@
                                 </div>
                                 <small class="text-muted">
                                     <i class="bi bi-person me-1"></i>Kasir: 
-                                    <span id="cashierName">Kasir 1</span>
+                                    <span id="cashierName">Kasir</span>
                                 </small>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- No Transactions Message (Default) -->
-                <div id="noTransactions" class="text-center py-5">
-                    <i class="bi bi-receipt" style="font-size: 4rem; color: #dee2e6;"></i>
-                    <h4 class="mt-3 text-muted">Belum ada transaksi hari ini</h4>
-                    <p class="text-muted">Transaksi yang Anda buat hari ini akan muncul di sini</p>
-                    <a href="/pos" class="btn btn-primary">
-                        <i class="bi bi-plus-circle me-2"></i>Buat Transaksi Pertama
-                    </a>
+                <!-- Ringkasan Hari ini Section - Versi Diperbaiki -->
+                <div class="card summary-card mb-4">
+                    <div class="card-header bg-gradient-dark text-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="mb-0">
+                                    <i class="bi bi-file-earmark-text me-2"></i>Ringkasan Hari Ini
+                                </h5>
+                                <small class="text-light opacity-75">Laporan transaksi harian sistem POS</small>
+                            </div>
+                            <div class="summary-stats">
+                                <span class="badge bg-light text-dark me-2">
+                                    <i class="bi bi-clock-history me-1"></i>Terakhir update: 14:53
+                                </span>
+                                <span class="badge bg-success">
+                                    <i class="bi bi-check-circle me-1"></i>Aktif
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="summary-content">
+                                    <h6 class="text-muted mb-3">Statistik Hari Ini:</h6>
+                                    <div class="row">
+                                        <div class="col-6 col-md-3 mb-3">
+                                            <div class="stat-item">
+                                                <div class="stat-label">Total Transaksi</div>
+                                                <div class="stat-value">5</div>
+                                                <div class="stat-trend text-success">
+                                                    <i class="bi bi-arrow-up-right"></i> Stabil
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-3 mb-3">
+                                            <div class="stat-item">
+                                                <div class="stat-label">Total Pendapatan</div>
+                                                <div class="stat-value">Rp 560K</div>
+                                                <div class="stat-trend text-primary">
+                                                    <i class="bi bi-graph-up"></i> +12%
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-3 mb-3">
+                                            <div class="stat-item">
+                                                <div class="stat-label">Produk Terjual</div>
+                                                <div class="stat-value">50</div>
+                                                <div class="stat-trend text-warning">
+                                                    <i class="bi bi-basket"></i> 10/item
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-3 mb-3">
+                                            <div class="stat-item">
+                                                <div class="stat-label">Rata-rata</div>
+                                                <div class="stat-value">Rp 112K</div>
+                                                <div class="stat-trend text-info">
+                                                    <i class="bi bi-calculator"></i> Per transaksi
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4">
+                                        <h6 class="text-muted mb-2">Detail Waktu Operasional:</h6>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="time-info">
+                                                    <i class="bi bi-clock text-primary me-2"></i>
+                                                    <span class="me-3">Transaksi Pertama: <strong>10:53</strong></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="time-info">
+                                                    <i class="bi bi-clock-history text-success me-2"></i>
+                                                    <span>Transaksi Terakhir: <strong>14:53</strong></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="action-panel">
+                                    <h6 class="text-muted mb-3">Aksi Laporan:</h6>
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-success btn-lg mb-2" id="printTodayBtn">
+                                            <i class="bi bi-printer me-2"></i>Cetak Laporan
+                                        </button>
+                                        <button class="btn btn-primary btn-lg mb-2" id="exportTodayBtn">
+                                            <i class="bi bi-download me-2"></i>Export Data
+                                        </button>
+                                        <button class="btn btn-outline-dark btn-lg" id="viewDetailsBtn">
+                                            <i class="bi bi-eye me-2"></i>Detail Lengkap
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="mt-4 pt-3 border-top">
+                                        <small class="text-muted">
+                                            <i class="bi bi-info-circle me-1"></i>
+                                            Laporan ini mencakup semua transaksi dari shift Pagi (08-16)
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Transactions Table -->
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-light">
+                <h5 class="mb-0">
+                    <i class="bi bi-arrow-down-circle me-2"></i>Tracker Transaksi
+                </h5>
+            </div>
+            <div class="card-body">
+                <!-- Quick Stats -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="alert alert-light py-2">
+                            <small class="text-muted">Transaksi Pertama</small>
+                            <div class="fw-bold" id="firstTransaction">10:53</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="alert alert-light py-2">
+                            <small class="text-muted">Transaksi Terakhir</small>
+                            <div class="fw-bold" id="lastTransaction">14:53</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="alert alert-light py-2">
+                            <small class="text-muted">Rata-rata/Transaksi</small>
+                            <div class="fw-bold" id="averageTransaction">Rp 112.034,8</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="alert alert-light py-2">
+                            <small class="text-muted">Status</small>
+                            <div>
+                                <span class="badge bg-success" id="shiftStatus">Aktif</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Transactions Table (Hidden by default) -->
-                <div id="transactionsTable" class="d-none">
-                    <!-- Quick Stats -->
-                    <div class="row mb-3">
-                        <div class="col-md-3">
-                            <div class="alert alert-light py-2">
-                                <small class="text-muted">Transaksi Pertama</small>
-                                <div class="fw-bold" id="firstTransaction">--:--</div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="alert alert-light py-2">
-                                <small class="text-muted">Transaksi Terakhir</small>
-                                <div class="fw-bold" id="lastTransaction">--:--</div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="alert alert-light py-2">
-                                <small class="text-muted">Rata-rata/Transaksi</small>
-                                <div class="fw-bold" id="averageTransaction">RP 0</div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="alert alert-light py-2">
-                                <small class="text-muted">Status</small>
-                                <div>
-                                    <span class="badge bg-success" id="shiftStatus">Aktif</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Transactions List -->
-                    <div class="table-responsive mb-4">
-                        <table class="table table-hover">
-                            <thead class="table-light">
-                                <tr>
-                                    <th width="60">No</th>
-                                    <th>Waktu</th>
-                                    <th>Invoice</th>
-                                    <th>Items</th>
-                                    <th>Total</th>
-                                    <th>Metode</th>
-                                    <th width="100">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody id="transactionsBody">
-                                <!-- Data akan diisi via JavaScript -->
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- Export Options -->
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="mb-1">
-                                        <i class="bi bi-file-earmark-text me-2"></i>Ringkasan Hari Ini
-                                    </h6>
-                                    <small class="text-muted">Export data transaksi hari ini</small>
-                                </div>
-                                <div>
-                                    <button class="btn btn-outline-primary btn-sm me-2" id="printTodayBtn">
-                                        <i class="bi bi-printer me-1"></i>Cetak
+                <!-- Transactions List -->
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th width="60">No</th>
+                                <th>Waktu</th>
+                                <th>Invoice</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Metode</th>
+                                <th width="100">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionsBody">
+                            <tr class="transaction-row">
+                                <td>1</td>
+                                <td>
+                                    <span class="time-badge time-evening">
+                                        <i class="bi bi-clock me-1"></i>14:53
+                                    </span>
+                                </td>
+                                <td><strong>INV-2025-009001</strong></td>
+                                <td><span class="badge bg-secondary">10 items</span></td>
+                                <td><strong>Rp 85.000</strong></td>
+                                <td><span class="badge bg-success">Tunai</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i>
                                     </button>
-                                    <button class="btn btn-primary btn-sm" id="exportTodayBtn">
-                                        <i class="bi bi-download me-1"></i>Export
+                                </td>
+                            </tr>
+                            <tr class="transaction-row">
+                                <td>2</td>
+                                <td>
+                                    <span class="time-badge time-afternoon">
+                                        <i class="bi bi-clock me-1"></i>13:58
+                                    </span>
+                                </td>
+                                <td><strong>INV-2025-009102</strong></td>
+                                <td><span class="badge bg-secondary">10 items</span></td>
+                                <td><strong>Rp 78.799</strong></td>
+                                <td><span class="badge bg-success">Tunai</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i>
                                     </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                </td>
+                            </tr>
+                            <tr class="transaction-row">
+                                <td>3</td>
+                                <td>
+                                    <span class="time-badge time-afternoon">
+                                        <i class="bi bi-clock me-1"></i>12:19
+                                    </span>
+                                </td>
+                                <td><strong>INV-2025-009103</strong></td>
+                                <td><span class="badge bg-secondary">10 items</span></td>
+                                <td><strong>Rp 178.423</strong></td>
+                                <td><span class="badge bg-success">Tunai</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="transaction-row">
+                                <td>4</td>
+                                <td>
+                                    <span class="time-badge time-morning">
+                                        <i class="bi bi-clock me-1"></i>11:24
+                                    </span>
+                                </td>
+                                <td><strong>INV-2025-009104</strong></td>
+                                <td><span class="badge bg-secondary">10 items</span></td>
+                                <td><strong>Rp 47.514</strong></td>
+                                <td><span class="badge bg-success">Tunai</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="transaction-row">
+                                <td>5</td>
+                                <td>
+                                    <span class="time-badge time-morning">
+                                        <i class="bi bi-clock me-1"></i>10:53
+                                    </span>
+                                </td>
+                                <td><strong>INV-2025-009105</strong></td>
+                                <td><span class="badge bg-secondary">10 items</span></td>
+                                <td><strong>Rp 170.438</strong></td>
+                                <td><span class="badge bg-success">Tunai</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -219,6 +393,85 @@
         color: #7b1fa2;
     }
     
+    /* Styling untuk Ringkasan Hari Ini yang diperbaiki */
+    .summary-card {
+        border: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    
+    .bg-gradient-dark {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    }
+    
+    .summary-stats {
+        display: flex;
+        align-items: center;
+    }
+    
+    .stat-item {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.2s;
+        height: 100%;
+    }
+    
+    .stat-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .stat-label {
+        font-size: 0.85rem;
+        color: #6c757d;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 5px;
+    }
+    
+    .stat-trend {
+        font-size: 0.75rem;
+        font-weight: 500;
+    }
+    
+    .time-info {
+        background: #f8f9fa;
+        padding: 10px 15px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .action-panel {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        height: 100%;
+    }
+    
+    /* Button styling */
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    
+    /* Card header styling */
+    .card-header.bg-light {
+        background-color: #f8f9fa !important;
+        border-bottom: 1px solid #dee2e6;
+    }
+    
     /* Status indicator */
     .status-indicator {
         width: 10px;
@@ -235,196 +488,32 @@
     .status-pending {
         background-color: #ffc107;
     }
-    
-    /* Empty state */
-    .empty-state-icon {
-        opacity: 0.3;
-    }
 </style>
 @endsection
 
 @section('scripts')
 <script>
-    // Data untuk transaksi hari ini (simulasi)
-    let todayTransactions = [];
-    
     // Format currency
     function formatCurrency(amount) {
-        return new Intl.NumberFormat('id-ID', {
-            style: 'currency',
-            currency: 'IDR',
-            minimumFractionDigits: 0
-        }).format(amount);
-    }
-    
-    // Get time indicator class
-    function getTimeClass(hour) {
-        const h = parseInt(hour);
-        if (h >= 5 && h < 12) return 'time-morning';
-        if (h >= 12 && h < 17) return 'time-afternoon';
-        return 'time-evening';
-    }
-    
-    // Load today's transactions
-    function loadTodayTransactions() {
-        // Simulasi data - dalam aplikasi nyata, ini akan diambil dari API
-        const now = new Date();
-        const currentHour = now.getHours();
-        
-        // Generate sample data for today
-        todayTransactions = [
-            {
-                id: 1,
-                invoice: 'INV-' + now.getFullYear() + '-' + String(now.getDate()).padStart(3, '0') + '001',
-                time: now.getHours() + ':' + String(now.getMinutes()).padStart(2, '0'),
-                items: 3,
-                total: 85000,
-                method: 'Tunai',
-                status: 'completed',
-                details: [
-                    { name: 'Kopi Hitam', qty: 2, price: 15000 },
-                    { name: 'Teh Manis', qty: 1, price: 10000 }
-                ]
-            }
-        ];
-        
-        // Add more sample transactions throughout the day
-        for (let i = 2; i <= 5; i++) {
-            const hour = Math.max(8, currentHour - i + 1);
-            todayTransactions.push({
-                id: i,
-                invoice: 'INV-' + now.getFullYear() + '-' + String(now.getDate()).padStart(3, '0') + String(100 + i).slice(-3),
-                time: hour + ':' + String(Math.floor(Math.random() * 60)).padStart(2, '0'),
-                items: Math.floor(Math.random() * 5) + 1,
-                total: Math.floor(Math.random() * 200000) + 10000,
-                method: ['Tunai', 'QRIS', 'Transfer'][Math.floor(Math.random() * 3)],
-                status: 'completed',
-                details: [
-                    { name: 'Kopi Hitam', qty: Math.floor(Math.random() * 3) + 1, price: 15000 },
-                    { name: 'Teh Manis', qty: Math.floor(Math.random() * 2) + 1, price: 10000 }
-                ]
-            });
-        }
-        
-        // Sort by time (newest first)
-        todayTransactions.sort((a, b) => {
-            const timeA = a.time.split(':');
-            const timeB = b.time.split(':');
-            return (parseInt(timeB[0]) * 60 + parseInt(timeB[1])) - (parseInt(timeA[0]) * 60 + parseInt(timeA[1]));
-        });
-        
-        updateDisplay();
-    }
-    
-    // Update display based on transactions
-    function updateDisplay() {
-        const noTransactionsDiv = document.getElementById('noTransactions');
-        const transactionsTableDiv = document.getElementById('transactionsTable');
-        
-        if (todayTransactions.length === 0) {
-            noTransactionsDiv.classList.remove('d-none');
-            transactionsTableDiv.classList.add('d-none');
-            return;
-        }
-        
-        noTransactionsDiv.classList.add('d-none');
-        transactionsTableDiv.classList.remove('d-none');
-        
-        // Update statistics
-        updateStatistics();
-        
-        // Render transactions table
-        renderTransactionsTable();
-    }
-    
-    // Update statistics
-    function updateStatistics() {
-        if (todayTransactions.length === 0) return;
-        
-        let totalRevenue = 0;
-        let totalProducts = 0;
-        let firstTime = todayTransactions[todayTransactions.length - 1].time;
-        let lastTime = todayTransactions[0].time;
-        
-        todayTransactions.forEach(transaction => {
-            totalRevenue += transaction.total;
-            totalProducts += transaction.items;
-        });
-        
-        const average = totalRevenue / todayTransactions.length;
-        
-        // Update counters
-        document.getElementById('todayCount').textContent = todayTransactions.length;
-        document.getElementById('todayRevenue').textContent = formatCurrency(totalRevenue);
-        document.getElementById('productsSold').textContent = totalProducts;
-        document.getElementById('firstTransaction').textContent = firstTime;
-        document.getElementById('lastTransaction').textContent = lastTime;
-        document.getElementById('averageTransaction').textContent = formatCurrency(average);
-        
-        // Update shift status based on current time
-        const now = new Date();
-        const hour = now.getHours();
-        const shiftStatus = document.getElementById('shiftStatus');
-        
-        if (hour >= 8 && hour < 16) {
-            shiftStatus.textContent = 'Shift Pagi';
-            shiftStatus.className = 'badge bg-success';
-        } else if (hour >= 16 && hour < 20) {
-            shiftStatus.textContent = 'Shift Siang';
-            shiftStatus.className = 'badge bg-warning';
-        } else {
-            shiftStatus.textContent = 'Shift Selesai';
-            shiftStatus.className = 'badge bg-secondary';
-        }
-    }
-    
-    // Render transactions table
-    function renderTransactionsTable() {
-        const tbody = document.getElementById('transactionsBody');
-        let html = '';
-        
-        todayTransactions.forEach((transaction, index) => {
-            const timeParts = transaction.time.split(':');
-            const timeClass = getTimeClass(timeParts[0]);
-            const methodClass = transaction.method === 'Tunai' ? 'bg-success' : 
-                               transaction.method === 'QRIS' ? 'bg-primary' : 'bg-purple';
-            
-            html += `
-                <tr class="transaction-row">
-                    <td>${index + 1}</td>
-                    <td>
-                        <span class="time-badge ${timeClass}">
-                            <i class="bi bi-clock me-1"></i>${transaction.time}
-                        </span>
-                    </td>
-                    <td>
-                        <strong>${transaction.invoice}</strong>
-                    </td>
-                    <td>
-                        <span class="badge bg-secondary">${transaction.items} items</span>
-                    </td>
-                    <td>
-                        <strong>${formatCurrency(transaction.total)}</strong>
-                    </td>
-                    <td>
-                        <span class="badge ${methodClass}">${transaction.method}</span>
-                    </td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-primary" onclick="showTransactionDetail(${transaction.id})">
-                            <i class="bi bi-eye"></i>
-                        </button>
-                    </td>
-                </tr>
-            `;
-        });
-        
-        tbody.innerHTML = html;
+        return 'Rp ' + new Intl.NumberFormat('id-ID').format(amount);
     }
     
     // Show transaction detail modal
     function showTransactionDetail(transactionId) {
-        const transaction = todayTransactions.find(t => t.id === transactionId);
-        if (!transaction) return;
+        // Sample transaction detail
+        const transaction = {
+            id: transactionId,
+            invoice: 'INV-2025-009001',
+            time: '14:53',
+            items: 10,
+            total: 85000,
+            method: 'Tunai',
+            details: [
+                { name: 'Kopi Hitam', qty: 2, price: 15000 },
+                { name: 'Teh Manis', qty: 5, price: 10000 },
+                { name: 'Roti Bakar', qty: 3, price: 5000 }
+            ]
+        };
         
         const modalContent = document.getElementById('transactionDetailContent');
         
@@ -452,8 +541,8 @@
             <div class="mb-3">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <h6 class="mb-0">${transaction.invoice}</h6>
-                    <span class="badge ${transaction.status === 'completed' ? 'bg-success' : 'bg-warning'}">
-                        ${transaction.status === 'completed' ? 'Selesai' : 'Pending'}
+                    <span class="badge bg-success">
+                        Selesai
                     </span>
                 </div>
                 <small class="text-muted">
@@ -507,10 +596,14 @@
             btn.innerHTML = originalText;
             btn.disabled = false;
             
-            if (todayTransactions.length === 0) {
-                alert('Tidak ada data transaksi hari ini untuk diexport');
-                return;
-            }
+            // Sample transactions data
+            const todayTransactions = [
+                { invoice: 'INV-2025-009001', time: '14:53', items: 10, total: 85000, method: 'Tunai' },
+                { invoice: 'INV-2025-009102', time: '13:58', items: 10, total: 78799, method: 'Tunai' },
+                { invoice: 'INV-2025-009103', time: '12:19', items: 10, total: 178423, method: 'Tunai' },
+                { invoice: 'INV-2025-009104', time: '11:24', items: 10, total: 47514, method: 'Tunai' },
+                { invoice: 'INV-2025-009105', time: '10:53', items: 10, total: 170438, method: 'Tunai' }
+            ];
             
             // Create CSV content
             let csvContent = "data:text/csv;charset=utf-8,";
@@ -524,7 +617,7 @@
             const encodedUri = encodeURI(csvContent);
             const link = document.createElement("a");
             link.setAttribute("href", encodedUri);
-            link.setAttribute("download", `transaksi_hariini_${new Date().toISOString().split('T')[0]}.csv`);
+            link.setAttribute("download", `transaksi_hariini_2025-12-09.csv`);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -533,45 +626,25 @@
     
     // Print today's summary
     document.getElementById('printTodayBtn').addEventListener('click', function() {
-        if (todayTransactions.length === 0) {
-            alert('Tidak ada transaksi hari ini untuk dicetak');
-            return;
-        }
-        
         // Open print dialog
         window.print();
     });
     
-    // Update current time
-    function updateCurrentTime() {
-        const now = new Date();
-        const timeString = now.toLocaleTimeString('id-ID', { 
-            hour: '2-digit', 
-            minute: '2-digit'
-        });
-        document.getElementById('lastUpdate').textContent = timeString;
-        
-        // Update shift display
-        const hour = now.getHours();
-        const shiftElement = document.getElementById('currentShift');
-        
-        if (hour >= 8 && hour < 16) {
-            shiftElement.textContent = 'Pagi (08-16)';
-        } else if (hour >= 16 && hour < 20) {
-            shiftElement.textContent = 'Siang (16-20)';
-        } else {
-            shiftElement.textContent = 'Malam (20-04)';
-        }
-    }
+    // View details button
+    document.getElementById('viewDetailsBtn')?.addEventListener('click', function() {
+        alert('Menampilkan detail lengkap laporan...');
+        // Redirect to detailed report page
+        // window.location.href = '/reports/detail';
+    });
     
-    // Initialize
+    // Add click event to all eye buttons
     document.addEventListener('DOMContentLoaded', function() {
-        // Load today's transactions
-        loadTodayTransactions();
-        
-        // Update time
-        updateCurrentTime();
-        setInterval(updateCurrentTime, 60000); // Update every minute
+        const eyeButtons = document.querySelectorAll('.btn-outline-primary');
+        eyeButtons.forEach((button, index) => {
+            button.addEventListener('click', function() {
+                showTransactionDetail(index + 1);
+            });
+        });
         
         // Get cashier name from localStorage
         const rememberedUser = localStorage.getItem('rememberedUser');
@@ -580,12 +653,6 @@
         } else {
             document.getElementById('cashierName').textContent = 'Kasir';
         }
-        
-        // Simulate new transaction every 2 minutes (for demo)
-        setInterval(() => {
-            // In real app, this would check server for new transactions
-            console.log('Checking for new transactions...');
-        }, 120000);
     });
 </script>
 @endsection
