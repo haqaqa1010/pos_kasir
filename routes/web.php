@@ -10,9 +10,12 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // Login Route
-Route::get('/login', function () {
-    return view('auth.login');
-});
+use App\Http\Controllers\Auth\LoginController;
+
+Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
 
 // Dashboard Pilihan Login
 Route::get('/', function () {

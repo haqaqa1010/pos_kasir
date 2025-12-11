@@ -81,7 +81,23 @@
         </div>
         
         <div class="login-body">
-            <form>
+
+            {{-- code untuk pesan password salah --}}
+
+            @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
+            <form action="{{ route('login.post') }}" method="POST">
+             @csrf
+
                 <!-- Email -->
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
@@ -89,8 +105,7 @@
                         <span class="input-group-text">
                             <i class="bi bi-envelope"></i>
                         </span>
-                        <input type="email" class="form-control" id="email" 
-                               placeholder="email@contoh.com" required>
+                        <input type="email" name="email" class="form-control" placeholder="example@gmail.com">
                     </div>
                 </div>
 
@@ -101,8 +116,7 @@
                         <span class="input-group-text">
                             <i class="bi bi-lock"></i>
                         </span>
-                        <input type="password" class="form-control" id="password" 
-                               placeholder="masukan password" required>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="insert password">
                         <button class="btn btn-outline-secondary" type="button" 
                                 id="togglePassword">
                             <i class="bi bi-eye"></i>
@@ -155,12 +169,6 @@
             }
         });
         
-        // Form submission simulation
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Simulasi login berhasil
-            window.location.href = '/pos';
-        });
     </script>
 </body>
 </html>
