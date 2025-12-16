@@ -22,7 +22,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Dashboard Pilihan Login
 Route::get('/', function () {
-    return view('auth.dashboard'); // Dashboard pilihan login
+    return view('auth.login'); // Dashboard pilihan login
 });
 
 // Login Admin

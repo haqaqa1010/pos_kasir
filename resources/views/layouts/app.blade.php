@@ -84,6 +84,21 @@
                 font-size: 14px !important;
             }
         }
+
+        .clock-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 3px;
+            display: inline-block;
+        }
+        
+        #live-clock {
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgb(48, 48, 48);
+        }
+
     </style>
     @stack('styles')
 </head>
@@ -117,7 +132,14 @@
                     </a>
                 </li>
             </ul>
-            
+
+            {{-- Live Clock --}}
+            <div class="me-2">
+                <div class="clock-container">
+                   <div  id="live-clock" >--:--:--</div>
+                </div>
+            </div>
+
             <!-- User Dropdown -->
             <div class="dropdown">
                 <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" 
@@ -164,6 +186,27 @@
     
     <!-- Custom Scripts -->
     <script>
+
+            //Live Clock
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const day = now.toLocaleDateString('id-ID', { weekday: 'long' });
+            const date = now.toLocaleDateString('id-ID', { 
+                day: 'numeric', 
+                month: 'short', 
+                year: 'numeric' 
+            });
+                document.getElementById('live-clock').textContent = 
+                `${hours}:${minutes}:${seconds} | ${date}`;
+        }
+               // Update clock immediately and every second
+        updateClock();
+        setInterval(updateClock, 1000);
+
+
         // Fungsi untuk format angka ke Rupiah
         function formatRupiah(angka) {
             return new Intl.NumberFormat('id-ID', {
