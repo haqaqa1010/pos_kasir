@@ -9,7 +9,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PosController;
 
 // LOGIN
-Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
+Route::get('/', [LoginController::class, 'showLogin'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -25,25 +25,35 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 });
 
+Route::middleware(['auth', 'role:cashier'])->group(function () {
+    Route::get('/pos', [PosController::class, 'index'])->name('pos.index');
+    Route::post('/pos/add', [PosController::class, 'addToCart'])->name('pos.add');
+    Route::post('/pos/update', [PosController::class, 'updateCart'])->name('pos.update');
+    Route::post('/pos/remove', [PosController::class, 'removeFromCart'])->name('pos.remove');
+    Route::post('/pos/clear', [PosController::class, 'clearCart'])->name('pos.clear');
+
+    Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
+    Route::post('/transaction', [TransactionsController::class, 'store'])->name('transaction.store');
+});
 
 
 
 // Route::get('/pos', [PosController::class, 'index'])->name('pos.index');
-Route::post('/pos/add', [PosController::class, 'addToCart'])->name('pos.add');
-Route::post('/pos/update', [PosController::class, 'updateCart'])->name('pos.update');
-Route::post('/pos/remove', [PosController::class, 'removeFromCart'])->name('pos.remove');
-Route::post('/pos/clear', [PosController::class, 'clearCart'])->name('pos.clear');
+// Route::post('/pos/add', [PosController::class, 'addToCart'])->name('pos.add');
+// Route::post('/pos/update', [PosController::class, 'updateCart'])->name('pos.update');
+// Route::post('/pos/remove', [PosController::class, 'removeFromCart'])->name('pos.remove');
+// Route::post('/pos/clear', [PosController::class, 'clearCart'])->name('pos.clear');
 
 
 // Route::get('/pos/payment', function () {
 //     return view('pos.payment');
 // });
 
-Route::get('/payment', [PaymentController::class, 'index'])
-        ->name('payment.index');
+// Route::get('/payment', [PaymentController::class, 'index'])
+//         ->name('payment.index');
 
-Route::post('/transaction', [TransactionsController::class, 'store'])
-        ->name('transaction.store');
+// Route::post('/transaction', [TransactionsController::class, 'store'])
+//         ->name('transaction.store');
 
 Route::get('/pos/print', function () {
     return view('pos.print');

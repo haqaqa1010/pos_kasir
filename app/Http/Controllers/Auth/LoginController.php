@@ -22,7 +22,22 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/pos');
+
+            $user = Auth::user();
+
+            // 🔁 redirect berdasarkan role
+            if ($user->role === 'admin') {
+                return redirect()->to('/admin/dashboard');
+            }
+
+            if ($user->role === 'cashier') {
+                return redirect()->route('pos.index');
+            }
+
+            // fallback kalau role tidak dikenali
+            Auth::logout();
+            return redirect('/')
+                ->withErrors(['email' => 'Role user tidak valid']);
         }
 
         return back()->withErrors([
@@ -36,6 +51,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/');
     }
 }
