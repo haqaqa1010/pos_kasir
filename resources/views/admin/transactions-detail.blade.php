@@ -27,8 +27,8 @@
     // Method colors dan labels
     $methodColors = [
         'cash' => 'bg-success text-white',
-        'qris' => 'bg-primary text-white',
-        'transfer' => 'bg-info text-white'
+        'qris' => 'bg-info text-white',
+        'transfer' => 'bg-primary text-white'
     ];
     $methodLabels = [
         'cash' => 'Tunai',

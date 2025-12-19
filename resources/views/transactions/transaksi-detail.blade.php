@@ -26,14 +26,14 @@
     // Method colors dan labels
     $methodColors = [
         'cash' => 'bg-success',
-        'qris' => 'bg-primary',
-        'transfer' => 'bg-info'
+        'qris' => 'bg-info',
+        'transfer' => 'bg-primary'
     ];
     
     $methodLabels = [
         'cash' => 'Tunai',
         'qris' => 'QRIS',
-        'transfer' => 'Transfer Bank'
+        'transfer' => 'Transfer'
     ];
 @endphp
 
