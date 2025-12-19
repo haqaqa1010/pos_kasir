@@ -233,17 +233,26 @@
                         </strong>
                     </div>
 
-                    <div class="d-grid gap-2">
-                        <a href="{{ route('payment.index') }}" class="btn btn-primary btn-lg py-3 fw-semibold shadow-sm">
-                            <i class="bi bi-credit-card-fill me-2"></i>Proses Pembayaran
-                        </a>
-                        <form action="{{ route('pos.clear') }}" method="POST">
-                            @csrf
-                            <button class="btn btn-outline-danger btn-lg py-3 fw-semibold">
-                                <i class="bi bi-x-circle me-2"></i>Batalkan Transaksi
-                            </button>
-                        </form>
-                    </div>
+                    <div class="d-grid gap-3">
+                    {{-- PROSES PEMBAYARAN --}}
+                    <a href="{{ route('payment.index') }}"
+                    class="btn btn-primary btn-lg py-3 fw-semibold shadow-sm d-flex align-items-center justify-content-center">
+                        <i class="bi bi-credit-card-fill me-2"></i>
+                        Proses Pembayaran
+                    </a>
+
+                    {{-- BATALKAN TRANSAKSI --}}
+                    <form action="{{ route('pos.clear') }}" method="POST" class="m-0">
+                        @csrf
+                        <button type="submit"
+                            class="btn btn-outline-danger btn-lg py-3 fw-semibold shadow-sm
+                                d-flex align-items-center justify-content-center w-100">
+                            <i class="bi bi-x-circle-fill me-2"></i>
+                            Batalkan Transaksi
+                        </button>
+                    </form>
+                </div>
+
                 </div>
                 @endif
             </div>
@@ -350,6 +359,10 @@
 
 .bg-gradient-success {
     background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
+}
+
+.cart-total .btn {
+    min-height: 56px;
 }
 
 /* RESPONSIVE */
